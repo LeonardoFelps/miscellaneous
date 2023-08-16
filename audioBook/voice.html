@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conversão de Texto em Fala</title>
+</head>
+<body>
+  <button id="playButton">Clique para Ouvir</button>
+
+  <script>
+    const texto = "Lembre se de que a taxa de fala pode afetar a compreensão do conteúdo, portanto, é aconselhável ajustá-la de forma a manter a clareza do discurso. Além disso, assim como com outras configurações da API Web Speech, a disponibilidade da funcionalidade pode variar entre os navegadores. Certifique-se de testar em diferentes navegadores para garantir uma experiência consistente.";
+
+    // Verifica se o navegador suporta a API de síntese de fala
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(texto);      
+      
+      document.getElementById('playButton').addEventListener('click', function() {
+        utterance.rate = 1.8;
+        utterance.lang = 'pt-BR'; // Define o idioma para português do Brasil
+        speechSynthesis.speak(utterance);
+      });
+    } else {
+      console.log("Seu navegador não suporta a síntese de fala.");
+    }
+  </script>
+</body>
+</html>
